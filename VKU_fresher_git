@@ -1,0 +1,93 @@
+package vd_funcion_schoolin;
+
+public class noHoe {
+    public static int vd2 (int a,int b, int c) 
+    { return a*b*c; }
+    public static boolean vd3 (double x) {
+        return x >0;}
+    public static boolean vd4 (double x) {
+        return x %2==0;}
+        public static int vd5 (int n){
+        for (int i=1;i<=n;i++) 
+            {vd5.k = vd5.k *i;}
+             return vd5.k;}
+   public static String vd7( String name){
+        return  ( "Hello" + name);}
+    public static String vd8(String str){
+        String reverseString="";
+        int length = str.length();
+        for ( int i = length - 1 ; i >= 0 ; i-- )
+            reverseString = reverseString + str.charAt(i);
+        if (str.equals(reverseString))
+            System.out.println(true);
+        else
+            System.out.println(false);
+            return reverseString;}
+            public static int vd9(int i, int j) {
+            if (j == 0) return i;
+            else
+            return vd9(j, i % j);}
+        public static boolean vd10 (String text) {
+            text =(text.toLowerCase());
+            if (text == null || text.trim().isEmpty()) {
+            return false;}
+            return  text.contains(  "a"+"b"+"c"+"d"+"e"+"f"+"g"+"h"+
+                                    "i"+"j"+"k"+"l"+"m"+"n"+"o"+"p"+
+                                    "q"+"r"+"s"+"t"+"u"+"v"+"w"+"x"+
+                                    "y"+"z");}
+             public static boolean vd11(int n){
+        if (n == 2 || n == 3) System.out.println("2 la` so nguyen to");
+        else {
+            if (n == 2 || n == 3) System.out.println("2 la` so nguyen to");
+            else {
+           if (n>2 && (n%3!=0 && n%2!=0))
+           {System.out.println(n +" la so nguyen to"); return true;}
+           else System.out.println(n + " khong phai la so nguyen to"); return false;}}
+            return vd11(n); }   
+        public static String s = " customer ";
+            public static int vd12 (int k){               
+                for (int i = 1; i <= k; i++) System.out.println(s);
+                return 0; }
+    public static float vd13(float a, float b, float c) {
+        float hp = (a +b +c)/2;
+         return (float) Math.sqrt(hp*(hp-a)*(hp-b)*(hp-c));      
+    }
+    public float n; 
+    public static String vd14 (float n) {
+        int k[] = new int[20];
+        int index = 0;
+        while (n>=1) {
+         k[index++] = (int) (n%2);
+          n = n/2;}  
+         for (int i = index-1; i >=0; i--)
+        System.out.print(k[i]);
+        return "";}  
+        public static int k;
+        public static int j[] = new int [10];
+        public static int vd15 (int[]j){
+            for (int i = 1; i<10; i++) { k =k+j[i];} 
+        return k;}
+   public static int vd16(int n) {
+              int sum=0;
+            for (int i = 1; i<=n;i++)
+             sum += i*i;
+            return sum;}
+            public static char vd17(int a){
+                String S = String.valueOf(a);
+                 int i;
+                for (i = 1; i < S.length()-1;i++);
+               char q = S.charAt(i);
+                return q;
+                }
+         public class vd18 {
+         public static int vd18 (long n){
+         long totalnumber = 1; int out = 0;
+          for (int i = 2; i <= n; i++)
+         totalnumber = totalnumber *i;
+          do { totalnumber = totalnumber/10;
+             out = out +1;
+          } while ( totalnumber % 10 == 0);
+           return out; }}
+                
+        
+}
