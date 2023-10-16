@@ -1,0 +1,136 @@
+package Book;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Scanner;
+
+import Book.eBook;
+
+public class BookManager extends eBook{
+	private static List<Book> BooksList;
+	private int array;
+
+	public BookManager () {
+		super();
+		BookManager.BooksList = new ArrayList<>();
+	}
+	public void setArray(int o) {
+		this.array = o;
+	}
+	public BookManager (int bookID, String bookTitle, String Author, long price, String format, double fileSizeMB) {
+		super(bookID, bookTitle, Author, price,format, fileSizeMB);
+	}
+	public void addBook (Book b) {
+		BookManager.BooksList.add(b);
+	}
+	public void addEBook ( eBook c) {
+		BookManager.BooksList.add(c);
+	}
+	public void addBookChoice(Book b, eBook c) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("nhấn 1 để add Sách cứng || 2 để add Sách điện tẻo ");
+		int n = sc.nextInt();
+		switch  (n) {
+			case 1:
+		array++;
+		b.input();
+		setFormat("object");
+		setFileSizeMB(0);
+		b.toString();
+		BookManager.BooksList.add(b);
+		break;
+			case 2:
+		array++;
+		c.input();
+		sc.nextLine();
+		c.toString();
+		BookManager.BooksList.add(c);
+		break;
+	}}
+	public void searchBookT(String tTitle) 
+	{
+		for (int i = 0; i <= array; i++) 
+			if(BooksList.get(i).getBookTitle().contains(tTitle))
+			System.out.println("những cuốn sách có tên " + tTitle + " : "+ BooksList.get(i).toString());
+	}
+	public void searchBookI(int ID) {
+		int j = -1;
+			do {
+				j ++;
+			} while (BooksList.get(j).getBookID()!= ID);
+		System.out.println(BooksList.get(j).toString());
+	}
+	public void removeBook(int bookID) {
+			int i = -1;
+		do {i = i+1;} while (BooksList.get(i).getBookID()!= bookID);
+			System.out.println("đã xóa : "+ BooksList.get(i).getBookTitle() );
+			BooksList.remove(i);
+		}
+	
+	public String displayBooks() {
+		return "danh sách Sách : "+ BooksList.toString() + "\n";
+	}
+	public void  sortByPriceAscending() {
+		for (int i = 0; i <= array; i++)
+		Collections.sort(BooksList, new Comparator<Book>()
+		{
+			//giá tăng dần
+			public int compare(Book b1, Book b2)
+			{
+				return Long.valueOf(b1.getPrice()).compareTo(b2.getPrice());
+			}
+			
+		});for (int i = 0; i <= array; i++) {
+			System.out.println(BooksList.get(i).getBookTitle() + BooksList.get(i).getPrice());
+		}
+	}
+	public void sortByPriceDescending() {
+		for (int i = 0; i <= array; i++)
+		Collections.sort(BooksList, new Comparator<Book>()
+		{
+			//sort by class's name
+			public int compare(Book b2, Book b1)
+			{
+				return Long.valueOf(b1.getPrice()).compareTo(b2.getPrice());
+			}
+		});
+			for (int i = 0; i <= array; i++) {
+			System.out.println(BooksList.get(i).getBookTitle() + BooksList.get(i).getPrice());
+		}
+	}
+	public void sortByType() {
+		for (int i = 0; i <= array; i++)
+		Collections.sort(BooksList, new Comparator<Book>()
+		{
+			//sort by class's name
+			public int compare(Book b2, Book b1)
+			{
+				return Double.valueOf(b1.getFileSizeMB()).compareTo(b2.getFileSizeMB());
+			}
+		});
+			for (int i = 0; i <= array; i++) {
+			System.out.println(BooksList.get(i).getBookTitle() + BooksList.get(i).getClass());
+		}
+	}
+	public void totalprice() {
+		long total = 0;
+		for(int i = 0; i<= array; i++) 
+		{
+		 total = total+ BooksList.get(i).getPrice();
+		 System.out.println(BooksList.get(i).getPrice());
+		}
+		System.out.println("tổng giá trị : " + total);
+	}
+	public void getTotalFileSize() {
+		double total = 0;
+		for (int i = 0; i <= array; i++) {
+			total = total + BooksList.get(i).getFileSizeMB();
+			System.out.println(BooksList.get(i).getFileSizeMB());
+		}
+		System.out.println("Tổng dung lượng : "+total);
+	}
+	}
+
+
