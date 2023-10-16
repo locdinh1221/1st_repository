@@ -1,0 +1,109 @@
+package Book;
+
+
+import java.util.Scanner;
+
+public class MENU {
+	public static void main(String[] args) {
+	int n = 0;
+		BookManager test0 = new BookManager();
+		Book B = new Book(1, "Harry Potter và Chiếc cốc lửa", "J.K Rowling", 230);
+		eBook C = new eBook (2,"Harry Potter và Hòn đá Phù thủy", "J.K Rowling", 250,"MOBI",80);
+		eBook K = new eBook (3,"Harry Potter và Hoàng tử Lai", "J.K Rowling", 180,"PDF",50);
+		Book A = new Book(4, "The Witcher", " Andrzej Sapkowski", 400);
+		test0.addBook(B);test0.addBook(K);test0.addBook(C);test0.addBook(A);
+		test0.setArray(3);
+
+		/**
+		 * THƯ VIỆN CÓ SẴN  
+		 * */
+		
+		System.out.println("nhấn 1 để xem danh sách các Sách. \n\n"
+				+ "nhấn số 2 để xem thêm sách.\n\nnhấn số 3 để tìm Sách.\n\n"
+				+ "nhấn số 4 để xóa sách lào đó.\n\nnhấn 5 để sắp xếp List sách"
+				+ "\n\nnhấn 6 để tính tổng giá tiền List sách"
+				+ "\n\nnhấn 7 để xem dung lượng toàn bộ list eBook"
+				+ "\n\nnhấn 0 để thoát khỏi MENU hiện tại");
+		
+		do {
+			Scanner sc = new Scanner(System.in);
+			 n = sc.nextInt();
+			if ( n == 1 ) {
+				System.out.println(test0.displayBooks()+ "\n");
+				System.out.println("\n-----MENU-----");
+				/////////
+			}
+			
+			if (  n == 2 ) 
+			{
+				test0.addBookChoice(test0, test0);
+				System.out.println(test0);
+				System.out.println("\n-----MENU-----");
+			}
+			///////////
+			if  ( n == 3){
+				System.out.println("nhấn 1 để tìm theo Title của Sách.\n nhấn 2 để tìm theo ID của sách.");
+				int k = sc.nextInt();
+				sc.nextLine();
+				switch (k) {
+				case 1:
+					System.out.println("nhập Title cần tìm.");
+					String Title = sc.nextLine();
+					test0.searchBookT(Title);
+					break;
+				case 2: 
+					System.out.println("nhập ID cần tìm.");
+					int q = sc.nextInt();
+					sc.nextLine();
+					test0.searchBookI(q);
+					break;
+				}
+				System.out.println("\n-----MENU-----");
+			}
+			//////
+			if ( n == 4 ) 
+			{
+				System.out.println("nhập ID cần xóa.");
+				int xoa = sc.nextInt();
+				test0.removeBook(xoa);
+				System.out.println("\n-----MENU-----");
+			}
+			//////
+			if ( n == 5 ) 
+			{
+				System.out.println("nhấn 1 để Sắp theo giá :");
+				System.out.println("nhấn 2 để Sắp theo loại :");
+				int sort = sc.nextInt();
+				switch(sort) 
+				{
+				case 1: 
+					System.out.println("1.tăng dần");
+					System.out.println("2.giảm dần");
+					int sort1 = sc.nextInt();
+					switch (sort1) {
+								case 1: test0.sortByPriceAscending(); // sắp theo thứ tự tăng dần
+								break;
+								case 2 :test0.sortByPriceDescending();// sắp theo thứ tự giảm dần
+								break;
+					}
+					sc.nextLine();break;
+				case 2: test0.sortByType();
+				// case 2: test0.sortByType(); // sắp theo thứ tự eBook trước sách cứng
+				}
+				System.out.println("\n-----MENU-----");
+			}
+				
+				if ( n == 6 )
+					{test0.totalprice(); // tính tổng tiền
+					System.out.println("\n-----MENU-----");
+					}
+				if ( n == 7 ) {
+					test0.getTotalFileSize(); // tính tổng dung lượng của List eBook
+					System.out.println("\n-----MENU-----");
+				}
+				if ( n== 0) {
+					System.out.println("\n-----ENDED-----");
+				}
+		} while (n != 0);
+	}
+}
