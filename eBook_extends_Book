@@ -1,0 +1,71 @@
+package Book;
+
+import java.util.Objects;
+import java.util.Scanner;
+
+public class eBook extends Book {
+	private String format;
+	public double fileSizeMB;
+	
+	public eBook () {
+		super();
+		this.format = "";
+		this.fileSizeMB = 0;
+	}
+	public eBook (int bookID, String bookTitle, String Author, long price, String format, double fileSizeMB) {
+		super(bookID, bookTitle, Author, price);
+		this.format = format;
+		this.fileSizeMB = fileSizeMB;
+	}
+	public String getFormat() {
+		return format;
+	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(fileSizeMB, format);
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		eBook other = (eBook) obj;
+		return Double.doubleToLongBits(fileSizeMB) == Double.doubleToLongBits(other.fileSizeMB)
+				&& Objects.equals(format, other.format);
+	}
+	public void setFormat(String format) {
+		this.format = format;
+	}
+	public double getFileSizeMB() {
+		return fileSizeMB;
+	}
+	public void setFileSizeMB(double fileSizeMB) {
+		this.fileSizeMB = fileSizeMB;
+	}
+	public void setEBook ( String format, double fileSizeMB) {
+		this.format = format;
+		this.fileSizeMB = fileSizeMB;
+	}
+	@Override
+	public String toString() {
+		return "[eBook [bookID=" + super.getBookID() + ", bookTitle=" + super.getBookTitle() + ", Author=" + super.getAuthor() + ", price=" + super.getPrice() + "format=" + format + ", fileSizeMB=" + fileSizeMB + "]\n";
+	}
+	public void input ()	{
+		Scanner sc = new Scanner(System.in);
+		super.input();
+		System.out.println("input eBook's format (//PDF//) : ");
+		this.format = sc.nextLine();
+		System.out.println("input eBook's file Size(MB) (Double) : ");
+		this.fileSizeMB = sc.nextDouble();
+	}
+	public boolean isBigBook (eBook c) {
+		return c.getFileSizeMB() >= 200;
+	}
+}
