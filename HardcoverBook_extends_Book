@@ -1,0 +1,48 @@
+package Book;
+
+import java.util.Scanner;
+
+public class HardcoverBook extends Book {
+	private String coverMaterial;
+	private int numberOfPages;
+	
+	public HardcoverBook () {
+		super();
+		this.coverMaterial = "";
+		this.numberOfPages = 0;
+	}
+	public HardcoverBook (int bookID , String bookTitle, String Author, long price, String coverMaterial, int numberOfPages) {
+		super (bookID, bookTitle, Author, price);
+		this.coverMaterial = coverMaterial;
+		this.numberOfPages = numberOfPages;
+	}
+	public String getCoverMaterial() {
+		return coverMaterial;
+	}
+	public void setCoverMaterial(String coverMaterial) {
+		this.coverMaterial = coverMaterial;
+	}
+	public int getNumberOfPages() {
+		return numberOfPages;
+	}
+	public void setNumberOfPages(int numberOfPages) {
+		this.numberOfPages = numberOfPages;
+	}
+	public void setHardcoverBook(String coverMaterial, int numberOfPages) {
+		this.coverMaterial = coverMaterial;
+		this.numberOfPages = numberOfPages;
+	}
+	@Override
+	public String toString() {
+		return "HardcoverBook [coverMaterial=" + coverMaterial + ", numberOfPages=" + numberOfPages + "]";
+	}
+	public void input () {
+	Scanner sc = new Scanner(System.in);
+	super.input();
+	System.out.println("input cover Material :");
+	this.coverMaterial = sc.nextLine();
+	System.out.println("input number of Pages :");
+	this.numberOfPages = sc.nextInt();
+	sc.close();
+	}
+}
