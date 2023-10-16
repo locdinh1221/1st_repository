@@ -1,0 +1,100 @@
+package Book;
+
+import java.util.Objects;
+import java.util.Scanner;
+
+public class Book {
+	private int bookID=0;
+	private String bookTitle;
+	private String Author;
+	private long price;
+	private String format;
+	private double fileSizeMB;
+	public Book () {
+		this.bookID = 0;
+		this.bookTitle = "";
+		this.Author = "";
+		this.price = 0;
+		this.format = "";
+		this.fileSizeMB = 0;
+	}
+	public Book(int bookID, String bookTitle, String Author, long price) {
+		this.bookID =bookID;
+		this.bookTitle = bookTitle;
+		this.Author = Author;
+		this.price = price;
+		this.format = "";
+		this.fileSizeMB = 0;
+	}
+
+	public int getBookID() {
+		return bookID;
+	}
+
+	public void setBookID(int bookID) {
+		this.bookID = bookID;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(Author, bookID, bookTitle, fileSizeMB, format, price);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Book other = (Book) obj;
+		return Objects.equals(Author, other.Author) && bookID == other.bookID
+				&& Objects.equals(bookTitle, other.bookTitle)
+				&& Double.doubleToLongBits(fileSizeMB) == Double.doubleToLongBits(other.fileSizeMB)
+				&& Objects.equals(format, other.format) && price == other.price;
+	}
+	public String getBookTitle() {
+		return bookTitle;
+	}
+
+	public void setBookTitle(String bookTitle) {
+		this.bookTitle = bookTitle;
+	}
+
+	public String getAuthor() {
+		return Author;
+	}
+
+	public void setAuthor(String author) {
+		Author = author;
+	}
+
+	public long getPrice() {
+		return price;
+	}
+
+	public void setPrice(long price) {
+		this.price = price;
+	}
+	public double getFileSizeMB() {
+		return 0;
+	}
+
+	@Override
+	public String toString() {
+		return "Book [bookID=" + bookID + ", bookTitle=" + bookTitle + ", Author=" + Author + ", price=" + price + "]\n";
+	}
+	public void input () {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Input BookID : ");
+		this.bookID = sc.nextInt();
+		sc.nextLine();
+		System.out.println("Input Book Title : ");
+		this.bookTitle = sc.nextLine();
+		System.out.println("Input Author : ");
+		this.Author = sc.nextLine();
+		System.out.println("Input price :  ");
+		this.price = sc.nextLong();
+		sc.nextLine();
+	}
+}
